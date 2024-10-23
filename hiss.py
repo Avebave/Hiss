@@ -23,14 +23,10 @@ subjektTargetSort =[1,2,3,4,5]
 
 while (loopInt < 5):
     subjektArray[loopInt] = random.randint(1,10)
-    print(loopInt)
-    print(subjektArray[loopInt])
     loopInt = loopInt + 1
 loopInt = 0
 while (loopInt < 5):
     subjektTarget[loopInt] = random.randint(1,10)
-    print(loopInt)
-    print(subjektTarget[loopInt])
     loopInt = loopInt + 1
 
 subjektArraySort = subjektArray
@@ -42,6 +38,8 @@ subjektArraySort.sort()
 subjektTargetSort.sort()
 print(subjektArraySort)
 print(subjektTargetSort)
+print(subjektArray)
+print(subjektTarget)
 
 
 # GÖR EN COPY AV ARRAY OK
