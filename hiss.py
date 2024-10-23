@@ -28,18 +28,13 @@ loopInt = 0
 while (loopInt < 5):
     subjektTarget[loopInt] = random.randint(1,10)
     loopInt = loopInt + 1
+loopInt = 0
 
-subjektArraySort = subjektArray
-subjektTargetSort = subjektTarget
 
 print(subjektArray)
 print(subjektTarget)
-subjektArraySort.sort()
-subjektTargetSort.sort()
-print(subjektArraySort)
-print(subjektTargetSort)
-print(subjektArray)
-print(subjektTarget)
+
+
 
 
 # GÖR EN COPY AV ARRAY OK
@@ -62,29 +57,24 @@ while (run == 1):
         while (procedure > floor):
             procedure = procedure - 1
             print (f'|----|\n| 00 | hissen är på våning: {procedure}\n|----|\n')
+            while (loopInt < 5):
+                if procedure == subjektArray[loopInt] and subjektArray[loopInt] >= subjektTarget[loopInt]:
+                    print("Finns en grabb här")
+                    subjektArray[loopInt] = 0
+                loopInt = loopInt + 1
+            loopInt = 0
             time.sleep(0.5)
     if previousFloor < floor:
         procedure = previousFloor
         while (procedure < floor):
             procedure = procedure + 1
             print (f'|----|\n| 00 | hissen är på våning: {procedure}\n|----|\n')
+            while (loopInt < 5):
+                if procedure == subjektArray[loopInt] and subjektArray[loopInt] <= subjektTarget[loopInt]:
+                    print("Finns en grabb här")
+                    subjektArray[loopInt] = 0
+                loopInt = loopInt + 1
+            loopInt = 0
             time.sleep(0.5)
     time.sleep(0.5)
     previousFloor = floor
-
-while ():
-    if previousFloor > floor:
-        procedure = previousFloor
-        while (procedure > floor):
-            procedure = procedure - 1
-            print (f'|----|\n| 00 | hissen är på våning: {procedure}\n|----|\n')
-            time.sleep(0.5)
-
-if previousFloor < floor:
-    procedure = previousFloor
-    while (procedure < floor):
-        procedure = procedure + 1
-        print (f'|----|\n| 00 | hissen är på våning: {procedure}\n|----|\n')
-        time.sleep(0.5)
-time.sleep(0.5)
-previousFloor = floor
