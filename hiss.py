@@ -20,6 +20,8 @@ subjektArray = [1,2,3,4,5]
 subjektTarget =[1,2,3,4,5]
 subjektArraySort = [1,2,3,4,5]
 subjektTargetSort =[1,2,3,4,5]
+maxPoint = 0
+minPoint = 0
 
 while (loopInt < 5):
     subjektArray[loopInt] = random.randint(1,10)
@@ -37,13 +39,37 @@ print(subjektTarget)
 
 
 
-print(loopInt)
+
 # GÖR EN COPY AV ARRAY OK
 
 #hiss skit
 while (run == 1):
+    if max(subjektArray) == 0:
+        while (loopInt < 5):
+            subjektArray[loopInt] = random.randint(1,10)
+            loopInt = loopInt + 1
+            subjektArray[0] = 1
+            loopInt = 0
+        while (loopInt < 5):
+            subjektTarget[loopInt] = random.randint(1,10)
+            loopInt = loopInt + 1
+            loopInt = 0
     try:
-        floor = int(input(""))
+
+        if direction == True:
+            if max(subjektTarget) > max(subjektArray):
+                maxPoint = max(subjektTarget)
+            else:
+                maxPoint = max(subjektArray)
+            if min(subjektTarget) < min(subjektArray):
+                minPoint = min(subjektTarget)
+            else:
+                minPoint = min(subjektArray)
+            floor = maxPoint
+            direction = False
+        elif direction == False:
+            floor = minPoint
+            direction = True
     except ValueError:
         print("Skriv rätt din idiot")
     if floor == 500:
@@ -74,7 +100,7 @@ while (run == 1):
             procedure = procedure + 1
             print (f'|----|\n| 00 | hissen är på våning: {procedure}\n|----|\n')
             while (loopInt < 5):
-                if procedure == subjektArray[loopInt] and subjektArray[loopInt] <= subjektTarget[loopInt]:
+                if procedure == subjektArray[loopInt] and subjektArray[loopInt] <= subjektTarget[loopInt] or (subjektArray[loopInt] == maxPoint and procedure == maxPoint):
                     print("Finns en grabb här")
                     subjektArray[loopInt] = 0
                 if (subjektTarget[loopInt] == procedure and subjektArray[loopInt] == 0):
@@ -83,6 +109,5 @@ while (run == 1):
                 loopInt = loopInt + 1
             loopInt = 0
             time.sleep(0.5)
-    print (loopInt)
     time.sleep(0.5)
     previousFloor = floor  
