@@ -24,6 +24,7 @@ subjektTargetSort =[1,2,3,4,5]
 while (loopInt < 5):
     subjektArray[loopInt] = random.randint(1,10)
     loopInt = loopInt + 1
+    subjektArray[0] = 1
 loopInt = 0
 while (loopInt < 5):
     subjektTarget[loopInt] = random.randint(1,10)
@@ -36,7 +37,7 @@ print(subjektTarget)
 
 
 
-
+print(loopInt)
 # GÖR EN COPY AV ARRAY OK
 
 #hiss skit
@@ -61,6 +62,9 @@ while (run == 1):
                 if procedure == subjektArray[loopInt] and subjektArray[loopInt] >= subjektTarget[loopInt]:
                     print("Finns en grabb här")
                     subjektArray[loopInt] = 0
+                if (subjektTarget[loopInt] == procedure and subjektArray[loopInt] == 0):
+                    print("fuck this guy!!")
+                    subjektTarget[loopInt] = 0
                 loopInt = loopInt + 1
             loopInt = 0
             time.sleep(0.5)
@@ -73,8 +77,12 @@ while (run == 1):
                 if procedure == subjektArray[loopInt] and subjektArray[loopInt] <= subjektTarget[loopInt]:
                     print("Finns en grabb här")
                     subjektArray[loopInt] = 0
+                if (subjektTarget[loopInt] == procedure and subjektArray[loopInt] == 0):
+                    print("fuck this guy!!")
+                    subjektTarget[loopInt] = 0
                 loopInt = loopInt + 1
             loopInt = 0
             time.sleep(0.5)
+    print (loopInt)
     time.sleep(0.5)
-    previousFloor = floor
+    previousFloor = floor  
