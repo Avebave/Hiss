@@ -1,5 +1,8 @@
 import random
 import time
+import customtkinter
+
+
 
 direction = True #true = upp, false = neråt
 elevatorButtons = [10]
@@ -40,22 +43,10 @@ print(subjektTarget)
 
 
 
-# GÖR EN COPY AV ARRAY OK
 
 #hiss skit
 while (run == 1):
-    if max(subjektArray) == 0:
-        while (loopInt < 5):
-            subjektArray[loopInt] = random.randint(1,10)
-            loopInt = loopInt + 1
-            subjektArray[0] = 1
-            loopInt = 0
-        while (loopInt < 5):
-            subjektTarget[loopInt] = random.randint(1,10)
-            loopInt = loopInt + 1
-            loopInt = 0
     try:
-
         if direction == True:
             if max(subjektTarget) > max(subjektArray):
                 maxPoint = max(subjektTarget)
@@ -63,7 +54,7 @@ while (run == 1):
                 maxPoint = max(subjektArray)
             if min(subjektTarget) < min(subjektArray):
                 minPoint = min(subjektTarget)
-            else:
+            elif min(subjektArray) != 0:
                 minPoint = min(subjektArray)
             floor = maxPoint
             direction = False
@@ -78,7 +69,6 @@ while (run == 1):
         if floor > 10 or floor < 1:
             print("Det finns endast 10 våningar")
             floor = previousFloor
-    
     if previousFloor > floor:
         procedure = previousFloor
         while (procedure > floor):
@@ -86,13 +76,14 @@ while (run == 1):
             print (f'|----|\n| 00 | hissen är på våning: {procedure}\n|----|\n')
             while (loopInt < 5):
                 if procedure == subjektArray[loopInt] and subjektArray[loopInt] >= subjektTarget[loopInt]:
-                    print("Finns en grabb här")
+                    print(f"grabb {loopInt} hoppar på")
                     subjektArray[loopInt] = 0
                 if (subjektTarget[loopInt] == procedure and subjektArray[loopInt] == 0):
-                    print("fuck this guy!!")
+                    print(f"grabb {loopInt} hoppar av")
                     subjektTarget[loopInt] = 0
                 loopInt = loopInt + 1
             loopInt = 0
+            
             time.sleep(0.5)
     if previousFloor < floor:
         procedure = previousFloor
@@ -101,13 +92,36 @@ while (run == 1):
             print (f'|----|\n| 00 | hissen är på våning: {procedure}\n|----|\n')
             while (loopInt < 5):
                 if procedure == subjektArray[loopInt] and subjektArray[loopInt] <= subjektTarget[loopInt] or (subjektArray[loopInt] == maxPoint and procedure == maxPoint):
-                    print("Finns en grabb här")
+                    print(f"grabb {loopInt} hoppar på")
                     subjektArray[loopInt] = 0
                 if (subjektTarget[loopInt] == procedure and subjektArray[loopInt] == 0):
-                    print("fuck this guy!!")
+                    print(f"grabb {loopInt} hoppar av")
                     subjektTarget[loopInt] = 0
                 loopInt = loopInt + 1
             loopInt = 0
             time.sleep(0.5)
     time.sleep(0.5)
+    while (loopInt < 5):
+        if procedure == subjektArray[loopInt] and subjektArray[loopInt] <= subjektTarget[loopInt] or (subjektArray[loopInt] == maxPoint and procedure == maxPoint):
+            print(f"grabb {loopInt} hoppar på")
+            subjektArray[loopInt] = 0
+        if (subjektTarget[loopInt] == procedure and subjektArray[loopInt] == 0):  
+            print(f"grabb {loopInt} hoppar av")
+            subjektTarget[loopInt] = 0     
+        loopInt = loopInt + 1
+    loopInt = 0
     previousFloor = floor  
+    if max(subjektTarget) == 0:
+        while (loopInt < 5):
+            subjektArray[loopInt] = random.randint(1,10)
+            loopInt = loopInt + 1
+            subjektArray[0] = 1
+        loopInt = 0
+        while (loopInt < 5):
+            subjektTarget[loopInt] = random.randint(1,10)
+            loopInt = loopInt + 1
+        loopInt = 0
+    print (subjektArray)
+    print (subjektTarget)
+   
+    print("blatte")
